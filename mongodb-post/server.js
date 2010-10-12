@@ -36,7 +36,7 @@ db.open(function(er, db) {
 				params(req, function(p) {
 					col.insert({
 						name : qs.parse(p).name,
-						timestamp : Math.round(((new Date()).getTime()-Date.UTC(1970,0,1))/1000) //timestamp?
+						timestamp : Date.now() // Math.round(((new Date()).getTime()-Date.UTC(1970,0,1))/1000) === Date.now()
 					});
 					res.writeHead(200, {'content-type':'text/html'});
 					res.end('<p>saved: ' + JSON.stringify(qs.parse(p)) + "</p><br /><a href='/'>back</a>");
